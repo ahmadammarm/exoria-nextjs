@@ -11,6 +11,7 @@ async function main() {
             email: 'admin@mail.com',
             name: 'Admin Exoria',
             password: hashedPassword,
+            subscriptionStatus: 'ACTIVE',
             role: 'ADMIN',
         },
     })
