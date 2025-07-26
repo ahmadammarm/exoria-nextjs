@@ -70,7 +70,7 @@ export default function SigninForm() {
             <div className="w-full md:w-full flex items-center justify-center p-6 md:p-12">
                 <div className="w-full max-w-md">
                     <h1 className="text-3xl md:text-4xl font-bold mb-2">Selamat datang di</h1>
-                    <h1 className="text-3xl md:text-4xl font-bold text-[#744ad2] mb-8">EquiChem</h1>
+                    <h1 className="text-3xl md:text-4xl font-bold text-[#dc2626] mb-8">EquiChem</h1>
 
                     <form onSubmit={handleSubmit(onSubmitForm)} className="space-y-6">
                         <div className="space-y-2">
@@ -110,7 +110,7 @@ export default function SigninForm() {
                         <button
                             type="submit"
                             disabled={mutation.isPending}
-                            className="w-full bg-[#744ad2] text-white font-semibold py-2 rounded-lg hover:bg-[#5f3c9b] transition-colors disabled:opacity-50"
+                            className="w-full bg-[#dc2626] text-white font-semibold py-2 rounded-lg hover:bg-red-600 transition-colors disabled:opacity-50"
                         >
                             {mutation.isPending ? "Signing in..." : "Sign In"}
                         </button>
@@ -118,7 +118,7 @@ export default function SigninForm() {
 
                     <p className="mt-6 text-center">
                         Belum punya akun?{" "}
-                        <Link href="/auth/sign-up" className="text-[#744ad2] font-medium">
+                        <Link href="/auth/sign-up" className="text-[#dc2626] font-medium">
                             Daftar
                         </Link>
                     </p>

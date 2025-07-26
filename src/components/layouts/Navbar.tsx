@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @next/next/no-img-element */
 "use client"
 
@@ -6,21 +7,24 @@ import Link from "next/link"
 import { Menu } from 'lucide-react'
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Button } from "../ui/button"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
+import { useSession } from "next-auth/react"
+import SignoutButton from "../auth/SignoutButton"
 
 const navItems = [
     { href: "/", label: "Beranda" },
     { href: "/portofolio", label: "Portofolio" },
     { href: "/tentang", label: "Tentang Kami" },
     { href: "/kontak", label: "Kontak" },
-    { href: "/auth/sign-in", label: "Masuk" },
-    { href: "/auth/sign-up", label: "Daftar" },
 ]
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false)
     const [isMobile, setIsMobile] = useState(false)
     const pathname = usePathname()
+    const router = useRouter();
+
+    const { status } = useSession();
 
     useEffect(() => {
         const checkMobile = () => {
@@ -57,11 +61,18 @@ export default function Navbar() {
                                 <Link
                                     key={item.href}
                                     href={item.href}
-                                    className={`${pathname === item.href ? "text-blue-600" : "text-gray-600 hover:text-blue-600"} px-3 py-2 rounded-md text-lg font-medium`}
+                                    className={`${pathname === item.href ? "text-[#dc2626]" : "text-gray-600 hover:text-[#dc2626]"} px-3 py-2 rounded-md text-lg font-medium`}
                                 >
                                     {item.label}
                                 </Link>
                             ))}
+                            {status === "authenticated" ? (
+                                <SignoutButton />
+                            ) : (
+                                <Button onClick={() => router.push('/auth/sign-in')} className="bg-[#dc2626] text-white hover:bg-red-600">
+                                    Sign in
+                                </Button>
+                            )}
                         </div>
                     </div>
 
@@ -88,7 +99,7 @@ export default function Navbar() {
                                             <Link
                                                 key={item.href}
                                                 href={item.href}
-                                                className={`${pathname === item.href ? "text-blue-600" : " text-gray-700 hover:text-blue-600 hover:bg-gray-50"} block px-3 py-2 rounded-md text-lg font-medium`}
+                                                className={`${pathname === item.href ? "text-[#dc2626]" : " text-gray-700 hover:text-[#dc2626] hover:bg-gray-50"} block px-3 py-2 rounded-md text-lg font-medium`}
                                                 onClick={() => setIsOpen(false)}
                                             >
                                                 {item.label}

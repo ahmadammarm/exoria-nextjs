@@ -6,8 +6,6 @@ import { authOptions } from "@/lib/auth";
 import NextAuthProvider from "@/providers/NextAuthProvider";
 import { Toaster } from "@/components/ui/sonner";
 import ReactQueryProvider from "@/providers/ReactQueryClientProvider";
-import Navbar from "@/components/layouts/Navbar";
-import Footer from "@/components/layouts/Footer";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -40,9 +38,7 @@ export default async function RootLayout({
                 <Toaster richColors />
                 <NextAuthProvider session={session}>
                     <ReactQueryProvider>
-                        <Navbar />
                         {children}
-                        <Footer />
                     </ReactQueryProvider>
                 </NextAuthProvider>
             </body>

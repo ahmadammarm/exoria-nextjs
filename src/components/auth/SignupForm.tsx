@@ -45,7 +45,7 @@ export default function SignupForm() {
             <div className="w-full md:w-full flex items-center justify-center p-6 md:p-12">
                 <div className="w-full max-w-md">
                     <h1 className="text-3xl md:text-4xl font-bold mb-2">Selamat datang di</h1>
-                    <h1 className="text-3xl md:text-4xl font-bold text-[#744ad2] mb-8">EquiChem</h1>
+                    <h1 className="text-3xl md:text-4xl font-bold text-[#dc2626] mb-8">EquiChem</h1>
 
                     <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
                         <div className="space-y-2">
@@ -57,7 +57,7 @@ export default function SignupForm() {
                                 type="text"
                                 placeholder="Masukkan nama lengkap..."
                                 {...register("name")}
-                                className="w-full px-4 py-3 rounded-md border border-[#d7d7d7] focus:outline-none focus:ring-2 focus:ring-[#744ad2]"
+                                className="w-full px-4 py-3 rounded-md border border-[#d7d7d7] focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                             />
                             {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>}
                         </div>
@@ -71,7 +71,7 @@ export default function SignupForm() {
                                 type="email"
                                 placeholder="Masukkan email..."
                                 {...register("email")}
-                                className="w-full px-4 py-3 rounded-md border border-[#d7d7d7] focus:outline-none focus:ring-2 focus:ring-[#744ad2]"
+                                className="w-full px-4 py-3 rounded-md border border-[#d7d7d7] focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                             />
                             {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
                         </div>
@@ -85,7 +85,7 @@ export default function SignupForm() {
                                 type="password"
                                 placeholder="Masukkan password..."
                                 {...register("password")}
-                                className="w-full px-4 py-3 rounded-md border border-[#d7d7d7] focus:outline-none focus:ring-2 focus:ring-[#744ad2]"
+                                className="w-full px-4 py-3 rounded-md border border-[#d7d7d7] focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                             />
                             {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
                         </div>
@@ -99,7 +99,7 @@ export default function SignupForm() {
                                 type="password"
                                 placeholder="Konfirmasi password..."
                                 {...register("confirmPassword")}
-                                className="w-full px-4 py-3 rounded-md border border-[#d7d7d7] focus:outline-none focus:ring-2 focus:ring-[#744ad2]"
+                                className="w-full px-4 py-3 rounded-md border border-[#d7d7d7] focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                             />
                             {errors.confirmPassword && <p className="text-red-500 text-sm">{errors.confirmPassword.message}</p>}
                         </div>
@@ -107,7 +107,7 @@ export default function SignupForm() {
                         <button
                             type="submit"
                             disabled={mutation.isPending}
-                            className="w-full py-3 px-4 bg-[#744ad2] text-white font-medium rounded-md hover:bg-[#3c266c] transition-colors"
+                            className="w-full py-3 px-4 bg-[#dc2626] text-white font-medium rounded-md hover:bg-red-600 transition-colors"
                         >
                             {mutation.isPending ? "Mendaftar..." : "Daftar Sekarang"}
                         </button>
@@ -115,7 +115,7 @@ export default function SignupForm() {
 
                     <p className="mt-6 text-center">
                         Sudah punya akun?{" "}
-                        <Link href="/auth/sign-in" className="text-[#744ad2] font-medium">
+                        <Link href="/auth/sign-in" className="text-[#dc2626] font-medium">
                             Masuk disini
                         </Link>
                     </p>

@@ -53,13 +53,13 @@ export const Banner = () => {
                                     data-aos="fade-right"
                                 >
                                     <h1 className="text-white text-4xl lg:text-5xl font-bold cursor-default mb-10 px-3 font-sans">
-                                        {slide.title} <span className="text-blue-600 font-sans">{slide.titleHighlight}</span>
+                                        {slide.title} <span className="text-[#dc2626] font-sans">{slide.titleHighlight}</span>
                                     </h1>
                                     <p className="text-white text-md lg:text-lg leading-relaxed font-medium cursor-default px-3 font-sans">
                                         {slide.description}
                                     </p>
                                     <Link href={slide.buttonLink} className="px-3 inline-block">
-                                        <Button className="px-8 py-3 bg-blue-600 border-primary text-blue-50 font-bold rounded-lg hover:bg-white hover:text-primary transition duration-300 mt-10">
+                                        <Button className="px-8 py-3 bg-[#dc2626] border-primary text-blue-50 font-bold rounded-lg hover:bg-white hover:text-primary transition duration-300 mt-10">
                                             {slide.buttonText}
                                         </Button>
                                     </Link>
