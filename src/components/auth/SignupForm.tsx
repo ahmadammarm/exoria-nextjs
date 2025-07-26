@@ -1,3 +1,5 @@
+"use client"
+
 import { SignupAction } from "@/action/SignupAction";
 import { SignupSchema, SignupSchemaType } from "@/schemas/SignupSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -21,7 +23,7 @@ export default function SignupForm() {
     const mutation = useMutation({
         mutationFn: ({ email, name, password, confirmPassword }: SignupSchemaType) => SignupAction(email, name, password, confirmPassword),
         onSuccess: () => {
-            toast.success("Registration successful! Please check your email to activate your account.");
+            toast.success("Registration successful!");
             router.push("/auth/sign-in");
         },
         onError: (error: Error) => {
