@@ -22,8 +22,15 @@ export default function AdminPage() {
 
     const mutation = useMutation({
         mutationFn: async () => {
-            await signOut({ callbackUrl: "/auth/sign-in", redirect: true });
+            const logout = await signOut({ callbackUrl: "/auth/sign-in", redirect: true });
+
+            return logout;
+        },
+        onSuccess: () => {
             toast.success("Logged out successfully!");
+        },
+        onError: (error: Error) => {
+            toast.error(error.message || "An error occurred during logout.");
         }
     });
 
