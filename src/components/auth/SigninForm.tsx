@@ -81,7 +81,7 @@ export default function SigninForm() {
                                 id="email"
                                 type="email"
                                 {...register("email")}
-                                className="w-full px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                                className="w-full px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                                 required
                                 disabled={mutation.isPending}
                             />
@@ -97,7 +97,7 @@ export default function SigninForm() {
                                 id="password"
                                 type="password"
                                 {...register("password")}
-                                className="w-full px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                                className="w-full px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                                 required
                                 disabled={mutation.isPending}
                             />
