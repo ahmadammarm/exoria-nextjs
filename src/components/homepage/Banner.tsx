@@ -6,11 +6,11 @@ export const Banner = () => {
     const slides = [
         {
             image: "/aset-home/banner-1.jpg",
-            title: "Selamat datang di",
+            title: "Welcome to",
             titleHighlight: "Exoria Serana Digital",
-            description: "Kami siap melayani untuk mengatasi permasalahan digital Anda dengan solusi yang tepat dan inovatif",
-            buttonText: "Selengkapnya",
-            buttonLink: "/tentang",
+            description: "We are ready to serve to overcome your digital problems with the right and innovative solutions",
+            buttonText: "Hire Us",
+            buttonLink: "/hire-us",
             imageUrl: "/aset-home/banner-1.jpg",
         },
     ];

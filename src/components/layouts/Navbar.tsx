@@ -12,10 +12,10 @@ import { useSession } from "next-auth/react"
 import SignoutButton from "../auth/SignoutButton"
 
 const navItems = [
-    { href: "/", label: "Beranda" },
-    { href: "/portofolio", label: "Portofolio" },
-    { href: "/tentang", label: "Tentang Kami" },
-    { href: "/kontak", label: "Kontak" },
+    { href: "/", label: "Home" },
+    { href: "/our-portfolio", label: "Our Portfolio" },
+    { href: "/why-choose-us", label: "Why Choose Us" },
+    { href: "/hire-us", label: "Hire Us" },
 ]
 
 export default function Navbar() {
