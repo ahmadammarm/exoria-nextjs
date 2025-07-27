@@ -64,7 +64,7 @@ const About = () => {
                             data-aos="fade-up"
                             data-aos-delay="100"
                         >
-                            <Image src="/aset-home/10.png" alt="layanan" width={100} height={20} />
+                            <Image src="/assets/homepage/best-service.png" alt="layanan" width={40} height={40} />
                             <span className="text-[#dc2626] font-bold text-xl">
                                 Best Services
                             </span>
@@ -74,7 +74,7 @@ const About = () => {
                             data-aos="fade-up"
                             data-aos-delay="200"
                         >
-                            <Image src="/aset-home/11.png" alt="harga" width={100} height={20} />
+                            <Image src="/assets/homepage/price.png" alt="harga" width={40} height={40} />
                             <span className="text-[#dc2626] font-bold text-xl">
                                 Affordable Price
                             </span>
@@ -130,19 +130,19 @@ const About = () => {
                                 {
                                     name: "Website Development",
                                     description: "We create responsive and user-friendly websites to enhance your online presence.",
-                                    imageUrl: "/aset-home/6.png",
+                                    imageUrl: "/assets/homepage/web.png",
                                     href: "/layanan",
                                 },
                                 {
                                     name: "UI/UX Design",
                                     description: "We create modern user experiences through intuitive and stunning UI/UX design.",
-                                    imageUrl: "/aset-home/7.png",
+                                    imageUrl: "/assets/homepage/ui-ux.png",
                                     href: "/layanan",
                                 },
                                 {
                                     name: "Graphic Design",
                                     description: "We deliver impressive visual identities through modern and creative graphic design.",
-                                    imageUrl: "/aset-home/9.png",
+                                    imageUrl: "/assets/homepage/gd.png",
                                     href: "/layanan",
                                 },
                             ].map((item, index) => (
@@ -189,17 +189,22 @@ const About = () => {
                     {/* Add your creative work gallery here */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {[
-                            { src: "/aset-home/portfolio-1.jpg", alt: "Project 1" },
-                            { src: "/aset-home/portfolio-2.jpg", alt: "Project 2" },
-                            { src: "/aset-home/portfolio-3.jpg", alt: "Project 3" },
+                            { src: "/assets/portfolio/purwa.png", alt: "Project 1" },
+                            { src: "/assets/portfolio/fate.png", alt: "Project 2" },
+                            { src: "/assets/portfolio/proshow.png", alt: "Project 3" },
                         ].map((item, index) => (
-                            <div key={index} className="overflow-hidden rounded-lg shadow-lg">
+                            <div
+                                key={index}
+                                className="overflow-hidden rounded-lg shadow-lg flex items-center justify-center bg-white"
+                                style={{ width: "100%", height: "250px", minHeight: "250px" }}
+                            >
                                 <Image
                                     src={item.src}
                                     alt={item.alt}
                                     width={400}
-                                    height={300}
-                                    className="w-full h-auto object-cover transition-transform duration-300 hover:scale-105"
+                                    height={250}
+                                    className="object-cover w-full h-full"
+                                    style={{ width: "100%", height: "100%" }}
                                 />
                             </div>
                         ))}
@@ -207,7 +212,7 @@ const About = () => {
                 </div>
 
                 {/* Testimonials */}
-                <div className="py-16 md:py-24 px-4 md:px-14">
+                <div className="py-10 md:py-16 px-4 md:px-14">
                     <h2
                         className="text-4xl md:text-5xl font-bold text-center mb-16 relative"
                         data-aos="fade-up"
@@ -221,27 +226,31 @@ const About = () => {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {[
                             {
-                                name: "Client 1",
-                                role: "CEO, Tech Company",
-                                feedback: "Exoria Serana Digital exceeded our expectations with their professionalism and creativity.",
+                                name: "Zaky Wahyu Oktavianto",
+                                role: "Manager",
+                                feedback: "Very high quality! However, that would be even greater if you can separate css & js for each type of theme! (not include all in one so it can be loaded faster). Thanks for this very high item!",
                                 rating: 5,
                             },
                             {
-                                name: "Client 2",
-                                role: "Marketing Manager",
-                                feedback: "Their team is highly skilled and delivered our project on time with outstanding results.",
+                                name: "Sujatmiko Dwi Kuncoro",
+                                role: "Commissioner",
+                                feedback: "Best design, well coded, really surprised to check it's reusability. Clean code. Easy to use. Most of category included and author will add more templates wow. I will recommend for all developers.",
                                 rating: 5,
                             },
                             {
-                                name: "Client 3",
-                                role: "Business Owner",
-                                feedback: "We are extremely satisfied with the service and support we received from Exoria Serana Digital.",
+                                name: "Ahmad Baihaqy",
+                                role: "IT Consultant",
+                                feedback: "Excellence !!! As a developer I will give 5 Star and will recommend 200% with confident.",
                                 rating: 5,
                             },
                         ].map((testimonial, index) => (
-                            <Card key={index} className="p-6 bg-white shadow-lg rounded-lg">
-                                <h3 className="text-xl font-bold mb-1">{testimonial.name}</h3>
-                                <p className="text-sm text-gray-500 mb-2">{testimonial.role}</p>
+                            <Card
+                                key={index}
+                                className={`p-6 shadow-lg rounded-lg ${index === 1 ? "bg-[#dc2626]" : "bg-white"
+                                    }`}
+                            >
+                                <h3 className={`text-xl font-bold mb-1 ${index === 1 ? "text-white" : ""}`}>{testimonial.name}</h3>
+                                <p className={`text-sm mb-2 ${index === 1 ? "text-gray-200" : "text-gray-500"}`}>{testimonial.role}</p>
                                 <div className="flex mb-2">
                                     {Array.from({ length: 5 }).map((_, i) => (
                                         <svg
@@ -254,7 +263,7 @@ const About = () => {
                                         </svg>
                                     ))}
                                 </div>
-                                <p className="text-gray-600">{testimonial.feedback}</p>
+                                <p className={`${index === 1 ? "text-white" : "text-gray-600"}`}>{testimonial.feedback}</p>
                             </Card>
                         ))}
                     </div>
@@ -304,7 +313,7 @@ const About = () => {
                         ].map((item, index) => (
                             <Card key={index} className="p-6 bg-white shadow-lg rounded-lg flex flex-col items-center">
                                 {item.icon}
-                                <p className="text-4xl text-[#dc2626] font-semibold mb-4 font-bold">{item.value}</p>
+                                <p className="text-4xl text-[#dc2626] mb-4 font-bold">{item.value}</p>
                                 <h3 className="text-2xl font-bold mb-2 text-center">{item.title}</h3>
                                 <p className="text-gray-600 text-center">{item.description}</p>
                             </Card>

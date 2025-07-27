@@ -10,6 +10,7 @@ import { Button } from "../ui/button"
 import { usePathname, useRouter } from "next/navigation"
 import { useSession } from "next-auth/react"
 import SignoutButton from "../auth/SignoutButton"
+import Image from "next/image"
 
 const navItems = [
     { href: "/", label: "Home" },
@@ -50,7 +51,7 @@ export default function Navbar() {
                 <div className="flex items-center justify-between h-16">
                     <div className="flex items-center">
                         <Link href="/" className="text-xl font-bold text-gray-800">
-                            <img src="/logo.png" width={60} height={60} alt="logo" />
+                            <Image src="/assets/logo.png" width={40} height={40} alt="logo" />
                         </Link>
                     </div>
 

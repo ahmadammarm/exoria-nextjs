@@ -5,13 +5,13 @@ import { Button } from "../ui/button";
 export const Banner = () => {
     const slides = [
         {
-            image: "/aset-home/banner-1.jpg",
+            image: "/assets/homepage/banner.jpg",
             title: "Welcome to",
             titleHighlight: "Exoria Serana Digital",
             description: "We are ready to serve to overcome your digital problems with the right and innovative solutions",
             buttonText: "Hire Us",
             buttonLink: "/hire-us",
-            imageUrl: "/aset-home/banner-1.jpg",
+            imageUrl: "/assets/homepage/banner.jpg",
         },
     ];
 
@@ -59,7 +59,7 @@ export const Banner = () => {
                                         {slide.description}
                                     </p>
                                     <Link href={slide.buttonLink} className="px-3 inline-block">
-                                        <Button className="px-8 py-3 bg-[#dc2626] border-primary text-blue-50 font-bold rounded-lg hover:bg-white hover:text-primary transition duration-300 mt-10">
+                                        <Button className="px-8 py-3 bg-[#dc2626] border-primary text-blue-50 font-bold rounded-lg hover:bg-white hover:text-primary transition duration-300 mb-16">
                                             {slide.buttonText}
                                         </Button>
                                     </Link>
