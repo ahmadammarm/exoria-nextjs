@@ -45,7 +45,7 @@ export default function SignupForm() {
             <div className="w-full md:w-full flex items-center justify-center p-6 md:p-12">
                 <div className="w-full max-w-md">
                     <h1 className="text-3xl md:text-4xl font-bold mb-2">Selamat datang di</h1>
-                    <h1 className="text-3xl md:text-4xl font-bold text-[#dc2626] mb-8">EquiChem</h1>
+                    <h1 className="text-3xl md:text-4xl font-bold text-[#dc2626] mb-8">Exoria Serana Digital</h1>
 
                     <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
                         <div className="space-y-2">
