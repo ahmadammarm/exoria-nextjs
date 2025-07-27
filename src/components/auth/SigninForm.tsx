@@ -61,15 +61,15 @@ export default function SigninForm() {
     return (
         <div className="flex flex-col md:flex-row h-screen py-10 px-10">
             {/* left side image */}
-            <div className="hidden md:relative md:block w-full md:w-auto h-64 md:h-auto">
-                <Image src="/assets/bg_login.png" alt="Laboratory equipment" fill className="object-cover rounded-2xl" priority />
-                <div className="absolute inset-0 bg-[#3c266c]/60 rounded-2xl"></div>
+            <div className="hidden md:block relative w-full h-64 md:h-auto">
+                <Image src="/assets/homepage/banner.jpg" alt="Laboratory equipment" fill className="object-cover rounded-2xl" priority />
+                <div className="absolute inset-0 bg-[#000]/60 rounded-2xl"></div>
             </div>
 
             {/* right side form */}
             <div className="w-full md:w-full flex items-center justify-center p-6 md:p-12">
                 <div className="w-full max-w-md">
-                    <h1 className="text-3xl md:text-4xl font-bold mb-2">Selamat datang di</h1>
+                    <h1 className="text-3xl md:text-4xl font-bold mb-2">Welcome to</h1>
                     <h1 className="text-3xl md:text-4xl font-bold text-[#dc2626] mb-8">Exoria Serana Digital</h1>
 
                     <form onSubmit={handleSubmit(onSubmitForm)} className="space-y-6">
@@ -82,7 +82,7 @@ export default function SigninForm() {
                                 type="email"
                                 {...register("email")}
                                 className="w-full px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
-                                required
+                                
                                 disabled={mutation.isPending}
                             />
                             {errors.email && (
@@ -98,7 +98,7 @@ export default function SigninForm() {
                                 type="password"
                                 {...register("password")}
                                 className="w-full px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
-                                required
+
                                 disabled={mutation.isPending}
                             />
                             {errors.password && (
@@ -117,9 +117,9 @@ export default function SigninForm() {
                     </form>
 
                     <p className="mt-6 text-center">
-                        Belum punya akun?{" "}
+                        Don&apos;t have an account yet?{" "}
                         <Link href="/auth/sign-up" className="text-[#dc2626] font-medium">
-                            Daftar
+                            Sign up
                         </Link>
                     </p>
                 </div>

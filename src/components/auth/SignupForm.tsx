@@ -38,19 +38,19 @@ export default function SignupForm() {
     return (
         <div className="flex flex-col md:flex-row w-full">
             <div className="hidden md:block relative w-full h-64 md:h-auto">
-                <Image src="/assets/bg_register.png" alt="Laboratory equipment" fill className="object-cover rounded-2xl" priority />
-                <div className="absolute inset-0 bg-[#3c266c]/60 rounded-2xl"></div>
+                <Image src="/assets/homepage/banner.jpg" alt="Laboratory equipment" fill className="object-cover rounded-2xl" priority />
+                <div className="absolute inset-0 bg-[#000]/60 rounded-2xl"></div>
             </div>
 
             <div className="w-full md:w-full flex items-center justify-center p-6 md:p-12">
                 <div className="w-full max-w-md">
-                    <h1 className="text-3xl md:text-4xl font-bold mb-2">Selamat datang di</h1>
+                    <h1 className="text-3xl md:text-4xl font-bold mb-2">Welcome to</h1>
                     <h1 className="text-3xl md:text-4xl font-bold text-[#dc2626] mb-8">Exoria Serana Digital</h1>
 
                     <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
                         <div className="space-y-2">
                             <Label htmlFor="name" className="block font-medium">
-                                Nama<span className="text-red-500">*</span>
+                                Name<span className="text-red-500">*</span>
                             </Label>
                             <Input
                                 id="name"
@@ -92,12 +92,12 @@ export default function SignupForm() {
 
                         <div className="space-y-2">
                             <Label htmlFor="confirmPassword" className="block font-medium">
-                                Konfirmasi Password<span className="text-red-500">*</span>
+                                Confirm Password<span className="text-red-500">*</span>
                             </Label>
                             <Input
                                 id="confirmPassword"
                                 type="password"
-                                placeholder="Konfirmasi password..."
+                                placeholder="Confirm password..."
                                 {...register("confirmPassword")}
                                 className="w-full px-4 py-3 rounded-md border border-[#d7d7d7] focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                             />
@@ -114,9 +114,9 @@ export default function SignupForm() {
                     </form>
 
                     <p className="mt-6 text-center">
-                        Sudah punya akun?{" "}
+                        Already have an account?{" "}
                         <Link href="/auth/sign-in" className="text-[#dc2626] font-medium">
-                            Masuk disini
+                            Sign in here
                         </Link>
                     </p>
                 </div>
