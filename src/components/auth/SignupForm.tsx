@@ -31,8 +31,8 @@ export default function SignupForm() {
         }
     });
 
-    const onSubmit = (data: SignupSchemaType) => {
-        mutation.mutate(data);
+    const onSubmit = async (data: SignupSchemaType) => {
+       await mutation.mutateAsync(data);
     }
 
     return (
