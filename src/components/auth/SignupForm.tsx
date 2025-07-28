@@ -21,7 +21,8 @@ export default function SignupForm() {
     });
 
     const mutation = useMutation({
-        mutationFn: ({ email, name, password, confirmPassword }: SignupSchemaType) => SignupAction(email, name, password, confirmPassword),
+        mutationFn: ({ email, name, password, confirmPassword }: SignupSchemaType) =>
+            SignupAction(email, name, password, confirmPassword),
         onSuccess: () => {
             toast.success("Registration successful!");
             router.push("/auth/sign-in");
@@ -32,7 +33,7 @@ export default function SignupForm() {
     });
 
     const onSubmit = async (data: SignupSchemaType) => {
-       await mutation.mutateAsync(data);
+        await mutation.mutateAsync(data);
     }
 
     return (

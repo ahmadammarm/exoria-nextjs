@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
 "use server"
 
 import prisma from "@/lib/prisma";
@@ -28,7 +29,7 @@ export async function SignupAction(email: string, name: string, password: string
 
         const hashedPassword = await bcrypt.hash(validatedPassword, 10);
 
-        const newUser = await prisma.user.create({
+        await prisma.user.create({
             data: {
                 email: validatedEmail,
                 name: validatedName,
@@ -38,7 +39,7 @@ export async function SignupAction(email: string, name: string, password: string
             },
         });
 
-        return newUser;
+        return { success: true };
 
 
     } catch (error: any) {
