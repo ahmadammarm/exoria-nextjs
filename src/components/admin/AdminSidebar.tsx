@@ -9,15 +9,17 @@ import {
 } from "@/components/ui/sidebar"
 import { useMutation } from "@tanstack/react-query";
 import { signOut, useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { toast } from "sonner";
 import { Button } from "../ui/button";
+import Link from "next/link";
 
 export default function AdminSidebar() {
 
     const { status } = useSession();
     const router = useRouter();
+    const pathname = usePathname();
 
     useEffect(() => {
         if (status === "unauthenticated") {
@@ -48,19 +50,59 @@ export default function AdminSidebar() {
         <div>
             <Sidebar>
                 <SidebarHeader>
-                    <h2>Admin Panel</h2>
+                    <h2 className="text-lg font-semibold px-4 py-2">Admin Panel</h2>
                 </SidebarHeader>
                 <SidebarContent>
                     <SidebarGroup>
-                        <h3>Users</h3>
-                        <ul>
-                            <li>User List</li>
-                            <li>Add User</li>
-                        </ul>
+                        <nav>
+                            <ul className="flex flex-col gap-1 px-2">
+                                <li>
+                                    <Link
+                                        href="/admin"
+                                        className={`block rounded px-3 py-2 transition-colors ${
+                                            pathname === "/admin"
+                                                ? "bg-[#dc2626] text-white font-medium"
+                                                : "hover:bg-muted"
+                                        }`}
+                                    >
+                                        Dashboard
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link
+                                        href="/admin/users"
+                                        className={`block rounded px-3 py-2 transition-colors ${
+                                            pathname === "/admin/users"
+                                                ? "bg-[#dc2626] text-white font-medium"
+                                                : "hover:bg-muted"
+                                        }`}
+                                    >
+                                        Manage Users
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link
+                                        href="/admin/products"
+                                        className={`block rounded px-3 py-2 transition-colors ${
+                                            pathname === "/admin/products"
+                                                ? "bg-[#dc2626] text-white font-medium"
+                                                : "hover:bg-muted"
+                                        }`}
+                                    >
+                                        Manage Products
+                                    </Link>
+                                </li>
+                            </ul>
+                        </nav>
                     </SidebarGroup>
                 </SidebarContent>
                 <SidebarFooter>
-                    <Button variant="destructive" onClick={handleLogout} disabled={mutation.isPending}>
+                    <Button
+                        variant="destructive"
+                        onClick={handleLogout}
+                        disabled={mutation.isPending}
+                        className="w-full"
+                    >
                         {mutation.isPending ? "Logging out..." : "Logout"}
                     </Button>
                 </SidebarFooter>
