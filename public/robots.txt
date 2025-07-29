@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://exoriaseranadigital.com
+
+# Sitemaps
+Sitemap: https://exoriaseranadigital.com/sitemap.xml

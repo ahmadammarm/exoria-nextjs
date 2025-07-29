@@ -18,9 +18,42 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-    title: "Exoria Serana Digital",
+    title: "Exoria Serana Digital | Your Digital Solutions",
     description: "Your digital problems with the right and innovative solutions",
+    keywords: [
+        "Exoria",
+        "Serana Digital",
+        "Digital Solutions",
+        "Innovative Solutions",
+        "Web Development",
+        "IT Services"
+    ],
+    robots: "index, follow",
+    openGraph: {
+        title: "Exoria Serana Digital",
+        description: "Your digital problems with the right and innovative solutions",
+        url: "https://exoriaseranadigital.com",
+        siteName: "Exoria Serana Digital",
+        images: [
+            {
+                url: "https://exoriaseranadigital.com/assets/landingpage.png",
+                width: 1200,
+                height: 630,
+                alt: "Exoria Serana Digital",
+            },
+        ],
+        locale: "id_ID",
+        type: "website",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Exoria Serana Digital",
+        description: "Your digital problems with the right and innovative solutions",
+        images: ["https://exoriaseranadigital.com/assets/landingpage.png"],
+        creator: "@yourtwitter",
+    },
 };
+
 
 export default async function RootLayout({
     children,
