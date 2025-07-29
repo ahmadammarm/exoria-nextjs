@@ -19,15 +19,22 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
     title: "Exoria Serana Digital | Your Digital Solutions",
-    description: "Your digital problems with the right and innovative solutions",
+    description: "Exoria Serana digital is an expert in creative idea comes with a creative mind. To prove this, Exoria is a formula to achieve success in web design, development and application system with great thoughts to start a business online.",
     keywords: [
         "Exoria",
         "Serana Digital",
-        "Digital Solutions",
-        "Innovative Solutions",
+        "Web Design",
         "Web Development",
-        "IT Services"
+        "Application System",
+        "Digital Solutions",
+        "Creative Ideas",
+        "Innovative Solutions",
+        "Online Business",
     ],
+    authors: [{ name: "Exoria Serana Digital", url: "https://exoriaseranadigital.com" }],
+    metadataBase: new URL("https://exoriaseranadigital.com"),
+    creator: "Exoria Serana Digital",
+    applicationName: "Exoria Serana Digital",
     robots: "index, follow",
     openGraph: {
         title: "Exoria Serana Digital",
