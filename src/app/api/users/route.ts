@@ -52,14 +52,6 @@ export async function POST(request: NextRequest) {
 
         const { email, name, password } = parsedBody.data;
 
-        const existingUser = await prisma.user.findUnique({
-            where: { email },
-        });
-
-        if (existingUser) {
-            return NextResponse.json({ error: "Email already exists" }, { status: 400 });
-        }
-
         const hashedPassword = await bcrypt.hash(password, 10);
 
         const newUser = await prisma.user.create({
