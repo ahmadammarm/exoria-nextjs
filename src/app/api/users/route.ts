@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { auth } from "@/lib/auth";
-import { prisma } from "@/lib/prisma";
+import prisma from "@/lib/prisma";
 import { CreateUser } from "@/schemas/CreateUserSchema";
 import bcrypt from "bcryptjs";
 import { NextRequest, NextResponse } from "next/server";
