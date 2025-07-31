@@ -14,24 +14,19 @@ export async function GET(request: NextRequest) {
             }
         });
 
-        const formattedProduct = products.map((product) => {
-            if (!product.imageUrl) {
-                return { ...product, imageUrl: null }
-            }
-
-            if (!product.imageUrl.startsWith("/assets/product/")) {
-                return { ...product, imageUrl: `/assets/product/${product.imageUrl}` }
-            }
-
-            return product
-        })
-
-        return NextResponse.json({ message: "Products fetched successfully", data: formattedProduct }, { status: 200 })
+        return NextResponse.json(
+            { message: "Products fetched successfully", data: products },
+            { status: 200 }
+        );
 
     } catch (error: any) {
-        return NextResponse.json({ message: error.message || "Internal Server Error" }, { status: 500 })
+        return NextResponse.json(
+            { message: error.message || "Internal Server Error" },
+            { status: 500 }
+        );
     }
 }
+
 
 export async function POST(request: NextRequest) {
     const session = await auth();
