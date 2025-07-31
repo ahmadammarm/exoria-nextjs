@@ -8,11 +8,7 @@ import { put } from "@vercel/blob";
 
 export async function GET(request: NextRequest) {
     try {
-        const products = await prisma.product.findMany({
-            orderBy: {
-                createdAt: "desc",
-            }
-        });
+        const products = await prisma.product.findMany();
 
         return NextResponse.json(
             { message: "Products fetched successfully", data: products },

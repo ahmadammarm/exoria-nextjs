@@ -5,13 +5,12 @@ import Image from "next/image"
 import { Card } from "../ui/card"
 import { Separator } from '../ui/separator'
 import { Clock, FolderKanban, Award } from "lucide-react"
-import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import axios from "axios"
 import { Button } from "../ui/button"
 import Link from "next/link"
 
 const About = () => {
-
 
     const { data: products = [], isLoading, isError } = useQuery({
         queryKey: ["products"],
@@ -226,8 +225,8 @@ const About = () => {
                                 <p className="text-gray-600 mb-4">{product.description}</p>
                                 <span className="text-[#dc2626] font-bold">${product.price.toFixed(2)}</span>
                                 <Button asChild>
-                                    <Link href={`/products/${product.slug}`} className="mt-4">
-                                        Purchase now!
+                                    <Link href={`/products/${product.slug}`} className="text-white">
+                                        View Details
                                     </Link>
                                 </Button>
                             </Card>
