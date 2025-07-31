@@ -23,7 +23,7 @@ export default function SigninForm() {
             if (session?.user.role === "ADMIN") {
                 router.push("/admin");
             } else {
-                router.push("/user");
+                router.push("/");
             }
         }
     }, [session, status, router]);
