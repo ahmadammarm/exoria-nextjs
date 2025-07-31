@@ -90,7 +90,7 @@ export default function AdminProductsPage() {
                             <TableCell className="px-4 py-2 border-b">{product.description}</TableCell>
                             <TableCell className="px-4 py-2 border-b">{product.price}</TableCell>
                             <TableCell className="px-4 py-2 border-b">
-                                <Image src={product.imageUrl} alt={product.name} className="w-16 h-16 object-cover" />
+                                <Image src={product.imageUrl} alt={product.name} className="w-16 h-16 object-cover" width={64} height={64} />
                             </TableCell>
                             <TableCell className="px-4 py-2 border-b">
                                 <Dialog>
