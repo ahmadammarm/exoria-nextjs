@@ -1,6 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 
-import { SignupAction } from "@/action/SignupAction";
 import { SignupSchema, SignupSchemaType } from "@/schemas/SignupSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
@@ -11,6 +11,7 @@ import { toast } from "sonner";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import Link from "next/link";
+import axios from "axios";
 
 export default function SignupForm() {
 
@@ -21,16 +22,20 @@ export default function SignupForm() {
     });
 
     const mutation = useMutation({
-        mutationFn: ({ email, name, password, confirmPassword }: SignupSchemaType) =>
-            SignupAction(email, name, password, confirmPassword),
+        mutationFn: async (data: SignupSchemaType) => {
+            const response = await axios.post("/api/auth/register", data);
+            return response.data;
+        },
         onSuccess: () => {
             toast.success("Registration successful!");
             router.push("/auth/sign-in");
         },
-        onError: (error: Error) => {
-            toast.error(error.message || "An error occurred during registration.");
-        }
+        onError: (error: any) => {
+            const message = error.response?.data?.error || error.message;
+            toast.error(message);
+        },
     });
+
 
     const onSubmit = async (data: SignupSchemaType) => {
         await mutation.mutateAsync(data);

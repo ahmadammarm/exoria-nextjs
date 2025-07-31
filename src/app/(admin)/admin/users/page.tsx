@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 
-import { DeleteUserAction } from "@/action/UsersAction";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import {
@@ -34,14 +33,11 @@ export default function AdminUsersPage() {
 
     const mutation = useMutation({
         mutationFn: async (userId: string) => {
-            const response = await DeleteUserAction(userId);
-
-            if (!response.success) {
+            const response = await axios.delete(`/api/users/${userId}`);
+            if (!response.data) {
                 throw new Error("Failed to delete user");
             }
-
-            return response;
-
+            return response.data;
         },
         onSuccess: () => {
             toast.success("User deleted successfully!");
@@ -60,9 +56,9 @@ export default function AdminUsersPage() {
         return <div className="p-4 text-red-500">Failed to load users.</div>;
     }
 
-    const onDelete = async (userId: string) => {
-        await mutation.mutateAsync(userId);
-    }
+    const handleDelete = (userId: string) => {
+        mutation.mutate(userId);
+    };
 
     return (
         <div className="overflow-x-auto p-4">
@@ -114,7 +110,10 @@ export default function AdminUsersPage() {
                                                 </Button>
                                             </DialogTrigger>
                                             <DialogTrigger asChild>
-                                                <Button variant="destructive" onClick={() => onDelete(user.id)}>
+                                                <Button
+                                                    variant="destructive"
+                                                    onClick={() => handleDelete(user.id)}
+                                                >
                                                     Confirm
                                                 </Button>
                                             </DialogTrigger>

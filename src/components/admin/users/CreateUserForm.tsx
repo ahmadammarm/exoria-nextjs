@@ -1,12 +1,12 @@
 "use client"
 
-import { CreateUserAction } from "@/action/UsersAction";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { CreateUser, CreateUserType } from "@/schemas/CreateUserSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -20,15 +20,18 @@ export default function CreateUserForm() {
     });
 
     const mutation = useMutation({
-        mutationFn: ({ email, name, password }: CreateUserType) => CreateUserAction(email, name, password),
+        mutationFn: async (data: CreateUserType) => {
+            const response = await axios.post("/api/users", data);
+            return response.data;
+        },
         onSuccess: () => {
             toast.success("User created successfully!");
             router.push("/admin/users");
         },
         onError: (error: Error) => {
-            toast.error(error.message || "An error occurred while creating the user.");
+            toast.error(error.message || "An error occurred during user creation.");
         }
-    })
+    });
 
     const onSubmit = async (data: CreateUserType) => {
         await mutation.mutateAsync(data);
