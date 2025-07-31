@@ -1,11 +1,34 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 
 import Image from "next/image"
 import { Card } from "../ui/card"
 import { Separator } from '../ui/separator'
 import { Clock, FolderKanban, Award } from "lucide-react"
+import { useQuery, useQueryClient } from '@tanstack/react-query';
+import axios from "axios"
 
 const About = () => {
+
+
+    const { data: products = [], isLoading, isError } = useQuery({
+        queryKey: ["products"],
+        queryFn: async () => {
+            const response = await axios.get("/api/products");
+            return response.data.data;
+        },
+        refetchOnWindowFocus: false,
+        retry: false
+    })
+
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+
+    if (isError) {
+        return <div className="p-4 text-red-500">Failed to load products.</div>;
+    }
+
     return (
         <div className="mt-20 md:mt-0 overflow-hidden">
             <div className="pt-20">
@@ -188,25 +211,19 @@ const About = () => {
                     </p>
                     {/* Add your creative work gallery here */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        {[
-                            { src: "/assets/portfolio/purwa.png", alt: "Project 1" },
-                            { src: "/assets/portfolio/fate.png", alt: "Project 2" },
-                            { src: "/assets/portfolio/proshow.png", alt: "Project 3" },
-                        ].map((item, index) => (
-                            <div
-                                key={index}
-                                className="overflow-hidden rounded-lg shadow-lg flex items-center justify-center bg-white"
-                                style={{ width: "100%", height: "250px", minHeight: "250px" }}
-                            >
+                        {products.map((product: any) => (
+                            <Card key={product.id} className="p-6 shadow-lg rounded-lg">
                                 <Image
-                                    src={item.src}
-                                    alt={item.alt}
-                                    width={400}
-                                    height={250}
-                                    className="object-cover w-full h-full"
-                                    style={{ width: "100%", height: "100%" }}
+                                    src={product.imageUrl || "/assets/default-product.png"}
+                                    alt={product.name}
+                                    className="w-full h-48 object-cover mb-4"
+                                    width={300}
+                                    height={200}
                                 />
-                            </div>
+                                <h3 className="text-xl font-bold mb-2">{product.name}</h3>
+                                <p className="text-gray-600 mb-4">{product.description}</p>
+                                <span className="text-[#dc2626] font-bold">${product.price.toFixed(2)}</span>
+                            </Card>
                         ))}
                     </div>
                 </div>
