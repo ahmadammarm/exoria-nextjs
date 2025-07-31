@@ -2,7 +2,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger, DialogClose } from "@/components/ui/dialog";
 import {
     Table,
     TableBody,
@@ -104,19 +104,19 @@ export default function AdminUsersPage() {
                                             </DialogDescription>
                                         </DialogHeader>
                                         <DialogFooter>
-                                            <DialogTrigger asChild>
+                                            <DialogClose asChild>
                                                 <Button variant="secondary">
                                                     Cancel
                                                 </Button>
-                                            </DialogTrigger>
-                                            <DialogTrigger asChild>
+                                            </DialogClose>
+                                            <DialogClose asChild>
                                                 <Button
                                                     variant="destructive"
                                                     onClick={() => handleDelete(user.id)}
                                                 >
                                                     Confirm
                                                 </Button>
-                                            </DialogTrigger>
+                                            </DialogClose>
                                         </DialogFooter>
                                     </DialogContent>
                                 </Dialog>
