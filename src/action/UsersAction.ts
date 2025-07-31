@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+"use server"
+
 import prisma from "@/lib/prisma";
-import { CreateUser } from "@/schemas/UsersAction";
+import { CreateUser } from "@/schemas/CreateUserSchema";
 import bcrypt from "bcryptjs";
 
-export async function UsersAction(email: string, name: string, password: string) {
+export async function CreateUserAction(email: string, name: string, password: string) {
     try {
         const parsedBody = CreateUser.safeParse({ email, name, password });
         if (!parsedBody.success) {
@@ -36,5 +38,25 @@ export async function UsersAction(email: string, name: string, password: string)
 
     } catch (error: any) {
         throw new Error("An error occurred during user creation: " + error.message);
+    }
+}
+
+export async function DeleteUserAction(userId: string) {
+    try {
+        const user = await prisma.user.findUnique({
+            where: { id: userId },
+        });
+
+        if (!user) {
+            throw new Error("User not found");
+        }
+
+        await prisma.user.delete({
+            where: { id: userId },
+        });
+
+        return { success: true };
+    } catch (error: any) {
+        throw new Error("An error occurred during user deletion: " + error.message);
     }
 }

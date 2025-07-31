@@ -72,7 +72,7 @@ export default function AdminSidebar() {
                                     <Link
                                         href="/admin/users"
                                         className={`block rounded px-3 py-2 transition-colors ${
-                                            pathname === "/admin/users"
+                                            pathname.startsWith("/admin/users")
                                                 ? "bg-[#dc2626] text-white font-medium"
                                                 : "hover:bg-muted"
                                         }`}
@@ -84,7 +84,7 @@ export default function AdminSidebar() {
                                     <Link
                                         href="/admin/products"
                                         className={`block rounded px-3 py-2 transition-colors ${
-                                            pathname === "/admin/products"
+                                            pathname.startsWith("/admin/products")
                                                 ? "bg-[#dc2626] text-white font-medium"
                                                 : "hover:bg-muted"
                                         }`}
