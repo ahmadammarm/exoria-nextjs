@@ -2,8 +2,9 @@
 import { auth } from "@/lib/auth";
 import prisma from "@/lib/prisma";
 import { CreateProductSchemaServer } from "@/schemas/CreateProductSchema";
+import { mkdir, writeFile } from "fs/promises";
 import { NextRequest, NextResponse } from "next/server";
-import { put } from "@vercel/blob";
+import path from "path";
 
 
 export async function GET(request: NextRequest) {
@@ -67,13 +68,13 @@ export async function POST(request: NextRequest) {
             );
         }
 
-        const extension = imageFile.name.split(".").pop();
-        const imageName = `${Date.now()}.${extension}`;
-        const buffer = Buffer.from(await imageFile.arrayBuffer());
+        const extension = path.extname(imageFile.name);
+        const imageName = `${Date.now()}${extension}`;
+        const uploadDirectory = path.join(process.cwd(), "public", "assets", "product");
 
-        const blob = await put(`products/${imageName}`, buffer, {
-            access: "public",
-        });
+        await mkdir(uploadDirectory, { recursive: true });
+        const buffer = Buffer.from(await imageFile.arrayBuffer());
+        await writeFile(path.join(uploadDirectory, imageName), buffer);
 
         const newProduct = await prisma.product.create({
             data: {
@@ -81,7 +82,7 @@ export async function POST(request: NextRequest) {
                 description: parsedBody.data.description,
                 price: parsedBody.data.price,
                 slug: name.toLowerCase().replace(/\s+/g, "-"),
-                imageUrl: blob.url,
+                imageUrl: `/assets/product/${imageName}`,
             },
         });
 
