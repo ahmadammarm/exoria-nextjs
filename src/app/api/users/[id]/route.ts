@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { auth } from "@/lib/auth";
 import prisma from "@/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function DELETE(request: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(request: NextRequest, { params: { id: userId } }: any) {
     const session = await auth();
     const user = session?.user;
 
@@ -15,8 +16,6 @@ export async function DELETE(request: NextRequest, { params }: { params: { id: s
     }
 
     try {
-        const userId = params.id;
-
         const existingUser = await prisma.user.findUnique({
             where: { id: userId },
         });
