@@ -52,7 +52,7 @@ export async function POST(request: NextRequest) {
         const name = formData.get("name");
         const description = formData.get("description");
         const price = formData.get("price");
-        const imageFile = formData.get("image") as File;
+        const imageFile = formData.get("imageUrl") as File;
 
         const data = {
             name,

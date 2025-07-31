@@ -7,11 +7,13 @@ export const CreateProductSchema = z.object({
     price: z.number().min(0, "Price must be a positive number"),
     imageUrl: z
         .any()
-        .refine((file) => file?.size <= MAX_IMAGE_SIZE, "Max file size is 5MB")
+        .refine((files) => files?.length > 0, "Image is required")
+        .refine((files) => files[0]?.size <= MAX_IMAGE_SIZE, "Max file size is 5MB")
         .refine(
-            (file) => ACCEPTED_IMAGE_TYPES.includes(file?.type),
+            (files) => ACCEPTED_IMAGE_TYPES.includes(files[0]?.type),
             "Only .jpg, .jpeg, .png and .webp formats are supported"
         ),
+
 });
 
 export type CreateProductSchemaType = z.infer<typeof CreateProductSchema>;
