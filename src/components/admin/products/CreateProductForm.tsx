@@ -43,7 +43,7 @@ export default function CreateProductForm() {
         if (data.imageUrl && data.imageUrl.length > 0) {
             formData.append("imageUrl", data.imageUrl[0]);
         }
-        formData.append("driveLink", data.driveLink || "");
+        // formData.append("driveLink", data.driveLink || "");
 
         await mutation.mutateAsync(formData);
     };
