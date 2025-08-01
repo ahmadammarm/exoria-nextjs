@@ -1,4 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+"use client";
+
 import BannerLayout from "@/components/layouts/BannerLayout";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
