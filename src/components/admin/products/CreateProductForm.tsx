@@ -43,6 +43,7 @@ export default function CreateProductForm() {
         if (data.imageUrl && data.imageUrl.length > 0) {
             formData.append("imageUrl", data.imageUrl[0]);
         }
+        formData.append("driveLink", data.driveLink || "");
 
         await mutation.mutateAsync(formData);
     };
@@ -81,6 +82,13 @@ export default function CreateProductForm() {
                             <p className="text-red-500 text-sm">{errors.imageUrl.message}</p>
                         )}
                     </div>
+
+                    {/* Drive Link */}
+                    {/* <div>
+                        <Label htmlFor="driveLink">Google Drive Link (optional)</Label>
+                        <Input id="driveLink" type="text" {...register("driveLink")} />
+                        {errors.driveLink && <p className="text-red-500 text-sm">{errors.driveLink.message}</p>}
+                    </div> */}
 
                     <Button type="submit" disabled={mutation.isPending}>
                         {mutation.isPending ? "Creating..." : "Create Product"}
