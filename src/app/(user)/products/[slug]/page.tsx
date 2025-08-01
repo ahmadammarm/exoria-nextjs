@@ -18,7 +18,7 @@ export default function ProductDetailPage() {
                     Silakan konfirmasi pembayaran Anda via WhatsApp ke nomor di bawah dan sebutkan nama produk yang Anda beli.
                 </h1>
                 <Button asChild className="bg-green-500 hover:bg-green-600 text-white w-full max-w-xs">
-                    <Link href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer">
+                    <Link href={`https://wa.me/6281332202685`} target="_blank" rel="noopener noreferrer">
                         Hubungi via WhatsApp
                     </Link>
                 </Button>

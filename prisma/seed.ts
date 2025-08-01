@@ -1,37 +1,22 @@
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
 
-const prisma = new PrismaClient({
-    datasources: {
-        db: {
-            url: process.env.POSTGRES_URL,
-        },
-    },
-});
+const prisma = new PrismaClient();
 
 async function main() {
-    const hashedPassword = await bcrypt.hash("adminexoria123", 10);
 
-    const adminUser = await prisma.user.upsert({
-        where: {
-            email: "admin@mail.com",
-        },
-        update: {
-            name: "Admin Exoria",
-            password: hashedPassword,
-            subscriptionStatus: "ACTIVE",
-            role: "ADMIN",
-        },
-        create: {
-            email: "admin@mail.com",
-            name: "Admin Exoria",
+    const hashedPassword = await bcrypt.hash("exoria123", 10);
+
+    await prisma.user.create({
+        data: {
+            name: "Admin User",
+            email: "admin@example.com",
             password: hashedPassword,
             subscriptionStatus: "ACTIVE",
             role: "ADMIN",
         },
     });
 
-    console.log("Admin user created/updated:", adminUser);
 }
 
 main()
