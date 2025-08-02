@@ -60,7 +60,7 @@ export default function OurPortfolioPage() {
                             />
                             <h3 className="text-xl font-bold mb-2">{product.name}</h3>
                             <p className="text-gray-600 mb-4">{product.description}</p>
-                            <span className="text-[#dc2626] font-bold">${product.price.toFixed(2)}</span>
+                            <span className="text-[#dc2626] font-bold">IDR {product.price.toFixed(2)}</span>
                             <Button asChild>
                                 <Link href={`/products/${product.slug}`} className="text-white">
                                     View Details

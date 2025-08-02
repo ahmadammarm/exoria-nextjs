@@ -15,11 +15,11 @@ export default function ProductDetailPage() {
                     height={300}
                 />
                 <h1 className="text-xl font-semibold text-gray-800 text-center mb-4">
-                    Silakan konfirmasi pembayaran Anda via WhatsApp ke nomor di bawah dan sebutkan nama produk yang Anda beli.
+                    Please confirm your payment via WhatsApp to the number below and mention the product name you purchased.
                 </h1>
                 <Button asChild className="bg-green-500 hover:bg-green-600 text-white w-full max-w-xs">
                     <Link href={`https://wa.me/6281332202685`} target="_blank" rel="noopener noreferrer">
-                        Hubungi via WhatsApp
+                        Contact Us on WhatsApp
                     </Link>
                 </Button>
             </div>

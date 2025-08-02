@@ -196,6 +196,18 @@ const About = () => {
                                 </Card>
                             ))}
                         </div>
+                        <div className="flex items-center justify-center gap-6">
+                            <Button asChild>
+                                <Link href="https://wa.me/6281332202685" target="_blank" rel="noopener noreferrer" className="bg-[#dc2626] text-white px-6 py-3 rounded-lg hover:bg-red-600 transition-colors">
+                                    Contact us via WhatsApp for IT consultation
+                                </Link>
+                            </Button>
+                            <Button asChild>
+                                <Link href="https://wa.me/6281332202685" target="_blank" rel="noopener noreferrer" className="bg-[#dc2626] text-white px-6 py-3 rounded-lg hover:bg-red-600 transition-colors">
+                                    Contact us via WhatsApp for web development services
+                                </Link>
+                            </Button>
+                        </div>
                     </div>
                 </div>
 
@@ -223,7 +235,7 @@ const About = () => {
                                 />
                                 <h3 className="text-xl font-bold mb-2">{product.name}</h3>
                                 <p className="text-gray-600 mb-4">{product.description}</p>
-                                <span className="text-[#dc2626] font-bold">${product.price.toFixed(2)}</span>
+                                <span className="text-[#dc2626] font-bold">IDR {product.price.toFixed(2)}</span>
                                 <Button asChild>
                                     <Link href={`/products/${product.slug}`} className="text-white">
                                         View Details
