@@ -18,7 +18,7 @@ export default function ProductDetailPage() {
                     Please confirm your payment via WhatsApp to the number below and mention the product name you purchased.
                 </h1>
                 <Button asChild className="bg-green-500 hover:bg-green-600 text-white w-full max-w-xs">
-                    <Link href={`https://wa.me/6281332202685`} target="_blank" rel="noopener noreferrer">
+                    <Link href={`https://wa.me/6281231964810`} target="_blank" rel="noopener noreferrer">
                         Contact Us on WhatsApp
                     </Link>
                 </Button>
