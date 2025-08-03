@@ -198,12 +198,12 @@ const About = () => {
                         </div>
                         <div className="flex items-center justify-center gap-6">
                             <Button asChild>
-                                <Link href="https://wa.me/81231964810" target="_blank" rel="noopener noreferrer" className="bg-[#dc2626] text-white px-6 py-3 rounded-lg hover:bg-red-600 transition-colors">
+                                <Link href="https://wa.me/6281231964810" target="_blank" rel="noopener noreferrer" className="bg-[#dc2626] text-white px-6 py-3 rounded-lg hover:bg-red-600 transition-colors">
                                     Contact us via WhatsApp for IT consultation
                                 </Link>
                             </Button>
                             <Button asChild>
-                                <Link href="https://wa.me/81231964810" target="_blank" rel="noopener noreferrer" className="bg-[#dc2626] text-white px-6 py-3 rounded-lg hover:bg-red-600 transition-colors">
+                                <Link href="https://wa.me/6281231964810" target="_blank" rel="noopener noreferrer" className="bg-[#dc2626] text-white px-6 py-3 rounded-lg hover:bg-red-600 transition-colors">
                                     Contact us via WhatsApp for web development services
                                 </Link>
                             </Button>
