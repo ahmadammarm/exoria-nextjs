@@ -59,6 +59,10 @@ export const metadata: Metadata = {
         images: ["https://exoriaseranadigital.com/assets/landingpage.png"],
         creator: "@yourtwitter",
     },
+    icons: {
+        icon: "/assets/layout/logo.jpg",
+        shortcut: "/assets/layout/shortcut.jpg",
+    }
 };
 
 
