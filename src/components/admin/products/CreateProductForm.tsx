@@ -84,11 +84,11 @@ export default function CreateProductForm() {
                     </div>
 
                     {/* Drive Link */}
-                    {/* <div>
+                    <div>
                         <Label htmlFor="driveLink">Google Drive Link (optional)</Label>
                         <Input id="driveLink" type="text" {...register("driveLink")} />
                         {errors.driveLink && <p className="text-red-500 text-sm">{errors.driveLink.message}</p>}
-                    </div> */}
+                    </div>
 
                     <Button type="submit" disabled={mutation.isPending}>
                         {mutation.isPending ? "Creating..." : "Create Product"}

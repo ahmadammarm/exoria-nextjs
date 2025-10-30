@@ -43,14 +43,14 @@ export async function POST(request: NextRequest) {
         const description = formData.get("description") as string;
         const price = Number(formData.get("price"));
         const imageFile = formData.get("imageUrl") as File;
-        // const driveLink = formData.get("driveFile") as string;
+        const driveLink = formData.get("driveFile") as string;
 
         const parsedBody = CreateProductSchemaServer.safeParse({
             name,
             description,
             price,
             imageUrl: imageFile,
-            // driveLink
+            driveLink
         });
 
         if (!parsedBody.success) {
@@ -76,7 +76,7 @@ export async function POST(request: NextRequest) {
                 price: parsedBody.data.price,
                 slug: name.toLowerCase().replace(/\s+/g, "-"),
                 imageUrl: blob.url,
-                // driveLink: parsedBody.data.driveLink || "",
+                driveLink: parsedBody.data.driveLink || "",
             },
         });
 
