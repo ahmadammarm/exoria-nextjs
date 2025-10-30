@@ -17,6 +17,7 @@ const navItems = [
     { href: "/our-portfolio", label: "Our Portfolio" },
     { href: "/why-choose-us", label: "Why Choose Us" },
     { href: "/hire-us", label: "Hire Us" },
+    { href: "/subscribe", label: "Subscribe" },
 ]
 
 export default function Navbar() {

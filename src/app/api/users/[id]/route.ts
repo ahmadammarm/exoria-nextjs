@@ -3,6 +3,55 @@ import { auth } from "@/lib/auth";
 import prisma from "@/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
+export async function GET(request: NextRequest, { params: { id: userId } }: any) {
+    try {
+        const user = await prisma.user.findUnique({
+            where: { id: userId },
+        });
+        if (!user) {
+            return NextResponse.json({ message: "User not found" }, { status: 404 });
+        }
+        return NextResponse.json({ message: "User fetched successfully", data: user }, { status: 200 });
+    } catch (error: any) {
+        return NextResponse.json(
+            { message: error.message || "Internal Server Error" }, { status: 500 }
+        );
+    }
+}
+
+export async function PUT(request: NextRequest, { params: { id: userId } }: any) {
+    const session = await auth();
+    const user = session?.user;
+
+    if (!user) {
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    if (user.role !== "ADMIN") {
+        return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    }
+
+    try {
+        const body = await request.json();
+        const { name, email, role, subscriptionStatus } = body;
+
+        const updatedUser = await prisma.user.update({
+            where: { id: userId },
+            data: {
+                name,
+                email,
+                role,
+                subscriptionStatus,
+            },
+        });
+        return NextResponse.json({ message: "User updated successfully", data: updatedUser }, { status: 200 });
+    } catch (error) {
+        console.error("Error updating user:", error);
+        return NextResponse.json({ error: "An error occurred while updating the user" }, { status: 500 });
+    }
+
+}
+
 export async function DELETE(request: NextRequest, { params: { id: userId } }: any) {
     const session = await auth();
     const user = session?.user;

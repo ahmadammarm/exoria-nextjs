@@ -52,7 +52,8 @@ export const authOptions: NextAuthOptions = {
                     email: user.email,
                     name: user.name,
                     role: user.role,
-                } satisfies { id: string; email: string; name: string | null; role?: string };
+                    subscriptionStatus: user.subscriptionStatus,
+                } satisfies { id: string; email: string; name: string | null; role?: string; subscriptionStatus?: string };
             },
         }),
     ],
@@ -64,6 +65,7 @@ export const authOptions: NextAuthOptions = {
                 token.name = user.name;
                 token.email = user.email;
                 token.role = user.role;
+                token.subscriptionStatus = user.subscriptionStatus;
             }
 
             return token;
@@ -75,6 +77,7 @@ export const authOptions: NextAuthOptions = {
                 name: token.name as string,
                 email: token.email as string,
                 role: token.role as string | undefined,
+                subscriptionStatus: token.subscriptionStatus as string | undefined,
             };
 
             return session;

@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -20,6 +21,8 @@ export default function OurPortfolioPage() {
         refetchOnWindowFocus: false,
         refetchOnReconnect: false,
     });
+
+    const { data: session } = useSession()
 
     if (isLoading) {
         return <div className="text-center py-10">Loading...</div>;
@@ -51,23 +54,37 @@ export default function OurPortfolioPage() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {products.map((product: any) => (
                         <Card key={product.id} className="p-6 shadow-lg rounded-lg">
-                            <Image
-                                src={product.imageUrl || "/assets/default-product.png"}
-                                alt={product.name}
-                                className="w-full h-48 object-cover mb-4"
-                                width={300}
-                                height={200}
-                            />
-                            <h3 className="text-xl font-bold mb-2">{product.name}</h3>
-                            <p className="text-gray-600 mb-4">{product.description}</p>
-                            <span className="text-[#dc2626] font-bold">
-                                {new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(product.price)}
-                            </span>
-                            <Button asChild>
-                                <Link href={`/products/${product.slug}`} className="text-white">
-                                    View Details
+                            {session?.user?.subscriptionStatus === "ACTIVE" ? (
+                                <Link href={product.driveLink} target="_blank" rel="noopener noreferrer">
+                                    <Image
+                                        src={product.imageUrl}
+                                        alt={product.name}
+                                        width={400}
+                                        height={300}
+                                        className="w-full h-48 object-cover rounded-md mb-4"
+                                    />
+                                    <h3 className="text-xl font-bold mb-2">{product.name}</h3>
+                                    <p className="text-gray-600 mb-4">{product.description}</p>
+                                    <Button variant="default">View Project</Button>
                                 </Link>
-                            </Button>
+                            ) : (
+                                <div>
+                                    <Image
+                                        src={product.imageUrl}
+                                        alt={product.name}
+                                        width={400}
+                                        height={300}
+                                        className="w-full h-48 object-cover rounded-md mb-4"
+                                    />
+                                    <h3 className="text-xl font-bold mb-2">{product.name}</h3>
+                                    <p className="text-gray-600 mb-4">{product.description}</p>
+                                    <Button asChild>
+                                        <Link href={`/products/${product.slug}`} className="text-white">
+                                            View Details
+                                        </Link>
+                                    </Button>
+                                </div>
+                            )}
                         </Card>
                     ))}
                 </div>
