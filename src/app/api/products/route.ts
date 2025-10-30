@@ -50,7 +50,7 @@ export async function POST(request: NextRequest) {
             description,
             price,
             imageUrl: imageFile,
-            driveLink
+            driveLink,
         });
 
         if (!parsedBody.success) {

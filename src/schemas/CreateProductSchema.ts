@@ -13,7 +13,7 @@ export const CreateProductSchemaClient = z.object({
             (files) => ACCEPTED_IMAGE_TYPES.includes(files[0]?.type),
             "Only .jpg, .jpeg, .png and .webp formats are supported"
         ),
-    // driveLink: z.string().optional()
+    driveLink: z.string().optional()
 
 
 });
@@ -31,7 +31,7 @@ export const CreateProductSchemaServer = z.object({
             (file) => ACCEPTED_IMAGE_TYPES.includes(file?.type),
             "Only .jpg, .jpeg, .png and .webp formats are supported"
         ),
-    // driveLink: z.string().optional()
+    driveLink: z.string().optional()
 });
 
 export type CreateProductSchemaServerType = z.infer<typeof CreateProductSchemaServer>;
