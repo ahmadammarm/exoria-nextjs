@@ -78,16 +78,25 @@ export default function OurPortfolioPage() {
                                     />
                                     <h3 className="text-xl font-bold mb-2">{product.name}</h3>
                                     <p className="text-gray-600 mb-4">{product.description}</p>
-                                    <Button asChild>
+                                    {/* <Button asChild>
                                         <Link href={`/products/${product.slug}`} className="text-white">
                                             View Details
                                         </Link>
-                                    </Button>
+                                    </Button> */}
                                 </div>
                             )}
                         </Card>
                     ))}
                 </div>
+                {session?.user?.subscriptionStatus !== "ACTIVE" && (
+                    <div className="flex items-center justify-center mt-10">
+                        <Button asChild>
+                            <Link href="/subscribe" className="text-white">
+                                Subscribe to Access More Projects
+                            </Link>
+                        </Button>
+                    </div>
+                )}
             </div>
             {/* Testimonials */}
             <div className="py-10 md:py-16 px-4 md:px-14">
