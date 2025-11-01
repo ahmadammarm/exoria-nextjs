@@ -9,6 +9,7 @@ import { useQuery } from '@tanstack/react-query';
 import axios from "axios"
 import { Button } from "../ui/button"
 import Link from "next/link"
+import { useSession } from "next-auth/react";
 
 const About = () => {
 
@@ -21,6 +22,8 @@ const About = () => {
         refetchOnWindowFocus: false,
         retry: false
     })
+
+    const { data: session } = useSession()
 
     if (isLoading) {
         return <div>Loading...</div>;
@@ -226,26 +229,49 @@ const About = () => {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {products.map((product: any) => (
                             <Card key={product.id} className="p-6 shadow-lg rounded-lg">
-                                <Image
-                                    src={product.imageUrl || "/assets/default-product.png"}
-                                    alt={product.name}
-                                    className="w-full h-48 object-cover mb-4"
-                                    width={300}
-                                    height={200}
-                                />
-                                <h3 className="text-xl font-bold mb-2">{product.name}</h3>
-                                <p className="text-gray-600 mb-4">{product.description}</p>
-                                <span className="text-[#dc2626] font-bold">
-                                    {new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(product.price)}
-                                </span>
-                                <Button asChild>
-                                    <Link href={`/products/${product.slug}`} className="text-white">
-                                        View Details
+                                {session?.user?.subscriptionStatus === "ACTIVE" ? (
+                                    <Link href={product.driveLink} target="_blank" rel="noopener noreferrer">
+                                        <Image
+                                            src={product.imageUrl}
+                                            alt={product.name}
+                                            width={400}
+                                            height={300}
+                                            className="w-full h-48 object-cover rounded-md mb-4"
+                                        />
+                                        <h3 className="text-xl font-bold mb-2">{product.name}</h3>
+                                        <p className="text-gray-600 mb-4">{product.description}</p>
+                                        <Button variant="default">View Project</Button>
                                     </Link>
-                                </Button>
+                                ) : (
+                                    <div>
+                                        <Image
+                                            src={product.imageUrl}
+                                            alt={product.name}
+                                            width={400}
+                                            height={300}
+                                            className="w-full h-48 object-cover rounded-md mb-4"
+                                        />
+                                        <h3 className="text-xl font-bold mb-2">{product.name}</h3>
+                                        <p className="text-gray-600 mb-4">{product.description}</p>
+                                        {/* <Button asChild>
+                                        <Link href={`/products/${product.slug}`} className="text-white">
+                                            View Details
+                                        </Link>
+                                    </Button> */}
+                                    </div>
+                                )}
                             </Card>
                         ))}
                     </div>
+                    {session?.user?.subscriptionStatus !== "ACTIVE" && (
+                        <div className="flex items-center justify-center mt-10">
+                            <Button asChild>
+                                <Link href="/subscribe" className="text-white">
+                                    Subscribe with IDR 15000 to Access More Projects
+                                </Link>
+                            </Button>
+                        </div>
+                    )}
                 </div>
 
                 {/* Testimonials */}

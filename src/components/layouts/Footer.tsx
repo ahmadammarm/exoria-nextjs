@@ -70,7 +70,7 @@ export default function Footer() {
                                 <Link href="https://wa.me/6281231964810" className="hover:text-[#dc2626] transition-colors">
                                     <Phone className="w-6 h-6" />
                                 </Link>
-                                <Link href="https://www.instagram.com/exoriadata_store" className="hover:text-[#dc2626] transition-colors">
+                                <Link href="https://www.instagram.com/exoriaweb_store" className="hover:text-[#dc2626] transition-colors">
                                     <Instagram className="w-6 h-6" />
                                 </Link>
                                 <Link href="https://www.linkedin.com/company/exoria-serana-digital/" className="hover:text-[#dc2626] transition-colors">

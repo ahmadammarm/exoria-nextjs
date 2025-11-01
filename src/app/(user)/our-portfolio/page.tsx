@@ -92,7 +92,7 @@ export default function OurPortfolioPage() {
                     <div className="flex items-center justify-center mt-10">
                         <Button asChild>
                             <Link href="/subscribe" className="text-white">
-                                Subscribe to Access More Projects
+                                Subscribe with IDR 15000 to Access More Projects
                             </Link>
                         </Button>
                     </div>
