@@ -283,7 +283,7 @@ const About = () => {
                         Testimonials
                     </h2>
                     <p className="text-center text-gray-600 mb-16" data-aos="fade-up">
-                        Here&apos;s what our clients say about us.
+                        Here&apos;s what the creator said about us.
                     </p>
                     {/* Add your testimonials here */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -296,7 +296,7 @@ const About = () => {
                             },
                             {
                                 name: "Sujatmiko Dwi Kuncoro",
-                                role: "Commissioner",
+                                role: "Founder",
                                 feedback: "Best design, well coded, really surprised to check it's reusability. Clean code. Easy to use. Most of category included and author will add more templates wow. I will recommend for all developers.",
                                 rating: 5,
                             },
