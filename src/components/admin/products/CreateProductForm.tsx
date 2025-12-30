@@ -21,7 +21,9 @@ export default function CreateProductForm() {
 
     const mutation = useMutation({
         mutationFn: async (formData: FormData) => {
-            const response = await axios.post("/api/products", formData);
+            const response = await axios.post("/api/products", formData, {
+                headers: { "Content-Type": "multipart/form-data" },
+            });
             return response.data;
         },
         onSuccess: () => {
@@ -41,7 +43,7 @@ export default function CreateProductForm() {
         if (data.imageUrl && data.imageUrl.length > 0) {
             formData.append("imageUrl", data.imageUrl[0]);
         }
-        // formData.append("driveLink", data.driveLink || "");
+        formData.append("driveLink", data.driveLink || "");
 
         await mutation.mutateAsync(formData);
     };
