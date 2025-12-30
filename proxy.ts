@@ -48,6 +48,7 @@ export const config = {
         "/user/:path*",
         "/auth/:path*",
         "/materi/:path",
-        "/result"
+        "/result",
+        "/subscribe"
     ],
 };

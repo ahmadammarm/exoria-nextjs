@@ -43,7 +43,7 @@ export default function Navbar() {
     useEffect(() => {
         if (!isMobile && isOpen) {
             setIsOpen(false)
-        }
+        } 
     }, [isMobile, isOpen])
 
     return (
