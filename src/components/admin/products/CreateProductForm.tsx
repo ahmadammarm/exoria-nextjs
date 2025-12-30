@@ -21,9 +21,7 @@ export default function CreateProductForm() {
 
     const mutation = useMutation({
         mutationFn: async (formData: FormData) => {
-            const response = await axios.post("/api/products", formData, {
-                headers: { "Content-Type": "multipart/form-data" },
-            });
+            const response = await axios.post("/api/products", formData);
             return response.data;
         },
         onSuccess: () => {

@@ -6,7 +6,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { put } from "@vercel/blob";
 
 
-export async function GET(request: NextRequest) {
+export async function GET() {
     try {
         const products = await prisma.product.findMany();
 
@@ -43,7 +43,14 @@ export async function POST(request: NextRequest) {
         const description = formData.get("description") as string;
         const price = Number(formData.get("price"));
         const imageFile = formData.get("imageUrl") as File;
-        const driveLink = formData.get("driveFile") as string;
+        const driveLink = formData.get("driveLink") as string;
+
+        if(!(imageFile instanceof File)) {
+            return NextResponse.json(
+                { message: "Image is required and must be a file" },
+                { status: 400 }
+            );
+        }
 
         const parsedBody = CreateProductSchemaServer.safeParse({
             name,
@@ -74,7 +81,7 @@ export async function POST(request: NextRequest) {
                 name: parsedBody.data.name,
                 description: parsedBody.data.description,
                 price: parsedBody.data.price,
-                slug: name.toLowerCase().replace(/\s+/g, "-"),
+                slug: parsedBody.data.name.toLowerCase().replace(/\s+/g, "-"),
                 imageUrl: blob.url,
                 driveLink: parsedBody.data.driveLink || "",
             },

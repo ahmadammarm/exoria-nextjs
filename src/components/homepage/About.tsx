@@ -338,7 +338,7 @@ const About = () => {
                         {[
                             {
                                 title: "Years of Experience",
-                                value: "5+",
+                                value: "2",
                                 description: "Years in the industry providing top-notch digital solutions.",
                                 icon: (
                                     <svg width={40} height={40} viewBox="0 0 24 24" className="mb-4" fill="none" stroke="#dc2626" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
@@ -351,7 +351,7 @@ const About = () => {
                             },
                             {
                                 title: "Completed Projects",
-                                value: "500+",
+                                value: "1",
                                 description: "Successfully delivered projects across various industries.",
                                 icon: (
                                     <svg width={40} height={40} viewBox="0 0 24 24" className="mb-4" fill="none" stroke="#dc2626" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
@@ -362,7 +362,7 @@ const About = () => {
                             },
                             {
                                 title: "Happy Clients",
-                                value: "300+",
+                                value: "1",
                                 description: "Clients who trust us for their digital needs.",
                                 icon: (
                                     <svg width={40} height={40} viewBox="0 0 24 24" className="mb-4" fill="none" stroke="#dc2626" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
