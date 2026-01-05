@@ -63,7 +63,7 @@ export default function HireUsPage() {
                         },
                         {
                             name: "Sujatmiko Dwi Kuncoro",
-                            role: "Commissioner",
+                            role: "Founder",
                             feedback: "Best design, well coded, really surprised to check it's reusability. Clean code. Easy to use. Most of category included and author will add more templates wow. I will recommend for all developers.",
                             rating: 5,
                         },
@@ -105,7 +105,7 @@ export default function HireUsPage() {
                     {[
                         {
                             title: "Years of Experience",
-                            value: "5+",
+                            value: "2",
                             description: "Years in the industry providing top-notch digital solutions.",
                             icon: (
                                 <svg width={40} height={40} viewBox="0 0 24 24" className="mb-4 animate-bounce" fill="none" stroke="#dc2626" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
@@ -118,7 +118,7 @@ export default function HireUsPage() {
                         },
                         {
                             title: "Completed Projects",
-                            value: "500+",
+                            value: "1",
                             description: "Successfully delivered projects across various industries.",
                             icon: (
                                 <svg width={40} height={40} viewBox="0 0 24 24" className="mb-4 animate-spin" fill="none" stroke="#dc2626" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
@@ -129,7 +129,7 @@ export default function HireUsPage() {
                         },
                         {
                             title: "Happy Clients",
-                            value: "300+",
+                            value: "1",
                             description: "Clients who trust us for their digital needs.",
                             icon: (
                                 <svg width={40} height={40} viewBox="0 0 24 24" className="mb-4 animate-pulse" fill="none" stroke="#dc2626" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
