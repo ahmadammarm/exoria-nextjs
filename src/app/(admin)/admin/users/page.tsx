@@ -25,7 +25,7 @@ export default function AdminUsersPage() {
         queryKey: ["users"],
         queryFn: async () => {
             const response = await axios.get("/api/users");
-            return response.data;
+            return response.data.data;
         },
         refetchOnWindowFocus: false,
         retry: false
@@ -43,8 +43,9 @@ export default function AdminUsersPage() {
             toast.success("User deleted successfully!");
             queryClient.invalidateQueries({ queryKey: ["users"] });
         },
-        onError: (error: Error) => {
-            toast.error(error.message || "An error occurred while deleting the user.");
+        onError: (error: any) => {
+            const errorMessage = error.response?.data?.message || error.message || "An error occurred while deleting the user.";
+            toast.error(errorMessage);
         }
     });
 

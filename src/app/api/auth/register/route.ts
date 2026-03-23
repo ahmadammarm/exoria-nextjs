@@ -16,6 +16,7 @@ export async function POST(request: NextRequest) {
         }
 
         const { email, name, password, confirmPassword } = parsed.data;
+        const normalizedEmail = email.trim().toLowerCase();
 
         if (password !== confirmPassword) {
             return NextResponse.json(
@@ -28,7 +29,7 @@ export async function POST(request: NextRequest) {
 
         const newUser = await prisma.user.create({
             data: {
-                email,
+                email: normalizedEmail,
                 name,
                 password: hashedPassword,
                 role: "USER",

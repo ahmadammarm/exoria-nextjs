@@ -35,14 +35,17 @@ export default function SigninForm() {
     const mutation = useMutation({
         mutationFn: async ({ data }: { data: SigninSchemaType }) => {
             const response = await signIn("credentials", {
-                email: data.email,
+                email: data.email.trim(),
                 password: data.password,
                 redirect: false,
             });
 
-
             if (!response?.ok) {
-                throw new Error("Invalid email or password");
+                if (response?.error === "CredentialsSignin") {
+                    throw new Error("Invalid email or password");
+                }
+
+                throw new Error("Server auth error. Please try again.");
             }
             return response;
         },

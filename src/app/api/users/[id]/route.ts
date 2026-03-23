@@ -5,13 +5,24 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest, { params: { id: userId } }: any) {
     try {
-        const user = await prisma.user.findUnique({
+        const session = await auth();
+        const user = session?.user;
+
+        if (!user) {
+            return NextResponse.json({ message: "Unauthorized - Please login" }, { status: 401 });
+        }
+
+        if (user.role !== "ADMIN") {
+            return NextResponse.json({ message: "Forbidden - Admin access required" }, { status: 403 });
+        }
+
+        const userData = await prisma.user.findUnique({
             where: { id: userId },
         });
-        if (!user) {
+        if (!userData) {
             return NextResponse.json({ message: "User not found" }, { status: 404 });
         }
-        return NextResponse.json({ message: "User fetched successfully", data: user }, { status: 200 });
+        return NextResponse.json({ message: "User fetched successfully", data: userData }, { status: 200 });
     } catch (error: any) {
         return NextResponse.json(
             { message: error.message || "Internal Server Error" }, { status: 500 }
@@ -24,11 +35,11 @@ export async function PUT(request: NextRequest, { params: { id: userId } }: any)
     const user = session?.user;
 
     if (!user) {
-        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ message: "Unauthorized - Please login" }, { status: 401 });
     }
 
     if (user.role !== "ADMIN") {
-        return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+        return NextResponse.json({ message: "Forbidden - Admin access required" }, { status: 403 });
     }
 
     try {
@@ -45,9 +56,9 @@ export async function PUT(request: NextRequest, { params: { id: userId } }: any)
             },
         });
         return NextResponse.json({ message: "User updated successfully", data: updatedUser }, { status: 200 });
-    } catch (error) {
+    } catch (error: any) {
         console.error("Error updating user:", error);
-        return NextResponse.json({ error: "An error occurred while updating the user" }, { status: 500 });
+        return NextResponse.json({ message: error.message || "An error occurred while updating the user" }, { status: 500 });
     }
 
 }
@@ -57,11 +68,11 @@ export async function DELETE(request: NextRequest, { params: { id: userId } }: a
     const user = session?.user;
 
     if (!user) {
-        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ message: "Unauthorized - Please login" }, { status: 401 });
     }
 
     if (user.role !== "ADMIN") {
-        return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+        return NextResponse.json({ message: "Forbidden - Admin access required" }, { status: 403 });
     }
 
     try {
@@ -70,8 +81,8 @@ export async function DELETE(request: NextRequest, { params: { id: userId } }: a
         });
 
         return NextResponse.json({ message: "User deleted successfully" }, { status: 200 });
-    } catch (error) {
+    } catch (error: any) {
         console.error("Error deleting user:", error);
-        return NextResponse.json({ error: "An error occurred while deleting the user" }, { status: 500 });
+        return NextResponse.json({ message: error.message || "An error occurred while deleting the user" }, { status: 500 });
     }
 }

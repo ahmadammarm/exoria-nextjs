@@ -5,23 +5,25 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 export default function AdminPage() {
-    const { data: users = [], isLoading, isError } = useQuery({
+    const { data: users = [] } = useQuery({
         queryKey: ["users"],
         queryFn: async () => {
             const response = await axios.get("/api/users");
-            return response.data;
+            return response.data.data;
         },
         refetchOnWindowFocus: false,
         retry: false
     });
 
-    if (isLoading) {
-        return <div className="p-4">Loading...</div>;
-    }
-
-    if (isError) {
-        return <div className="p-4 text-red-500">Failed to load users.</div>;
-    }
+    const { data: products = [] } = useQuery({
+        queryKey: ["products"],
+        queryFn: async () => {
+            const response = await axios.get("/api/products");
+            return response.data.data;
+        },
+        refetchOnWindowFocus: false,
+        retry: false
+    });
 
     return (
         <div className="p-4">
@@ -50,7 +52,7 @@ export default function AdminPage() {
                         </CardTitle>
                     </CardHeader>
                     <CardContent className="flex flex-col items-center">
-                        <span className="text-3xl font-bold text-white">45</span>
+                        <span className="text-3xl font-bold text-white">{products.length}</span>
                     </CardContent>
                 </Card>
             </div>
