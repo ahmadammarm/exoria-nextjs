@@ -85,7 +85,7 @@ export default function SigninForm() {
                                 type="email"
                                 {...register("email")}
                                 className="w-full px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
-                                
+
                                 disabled={mutation.isPending}
                             />
                             {errors.email && (
