@@ -3,7 +3,12 @@ import { auth } from "@/lib/auth";
 import prisma from "@/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(request: NextRequest, { params: { id: userId } }: any) {
+export async function GET(
+    request: NextRequest,
+    context: { params: Promise<{ id: string }> }
+) {
+    const { id: userId } = await context.params;
+
     try {
         const session = await auth();
         const user = session?.user;
@@ -30,7 +35,12 @@ export async function GET(request: NextRequest, { params: { id: userId } }: any)
     }
 }
 
-export async function PUT(request: NextRequest, { params: { id: userId } }: any) {
+export async function PUT(
+    request: NextRequest,
+    context: { params: Promise<{ id: string }> }
+) {
+    const { id: userId } = await context.params;
+
     const session = await auth();
     const user = session?.user;
 
@@ -63,7 +73,12 @@ export async function PUT(request: NextRequest, { params: { id: userId } }: any)
 
 }
 
-export async function DELETE(request: NextRequest, { params: { id: userId } }: any) {
+export async function DELETE(
+    request: NextRequest,
+    context: { params: Promise<{ id: string }> }
+) {
+    const { id: userId } = await context.params;
+
     const session = await auth();
     const user = session?.user;
 
