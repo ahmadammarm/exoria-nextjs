@@ -114,7 +114,7 @@ export default function WhyChooseUsPage() {
                     {[
                         {
                             title: "Years of Experience",
-                            value: "2",
+                            value: "1",
                             description: "Years in the industry providing top-notch digital solutions.",
                             icon: (
                                 <svg width={40} height={40} viewBox="0 0 24 24" className="mb-4 animate-bounce" fill="none" stroke="#dc2626" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
@@ -127,7 +127,7 @@ export default function WhyChooseUsPage() {
                         },
                         {
                             title: "Completed Projects",
-                            value: "1",
+                            value: "",
                             description: "Successfully delivered projects across various industries.",
                             icon: (
                                 <svg width={40} height={40} viewBox="0 0 24 24" className="mb-4 animate-spin" fill="none" stroke="#dc2626" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
@@ -138,7 +138,7 @@ export default function WhyChooseUsPage() {
                         },
                         {
                             title: "Happy Clients",
-                            value: "1",
+                            value: "",
                             description: "Clients who trust us for their digital needs.",
                             icon: (
                                 <svg width={40} height={40} viewBox="0 0 24 24" className="mb-4 animate-pulse" fill="none" stroke="#dc2626" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">

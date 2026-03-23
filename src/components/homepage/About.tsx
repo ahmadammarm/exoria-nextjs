@@ -118,8 +118,8 @@ const About = () => {
                             icon: <Clock size={70} color="#fff" strokeWidth={2} className="text-white" />,
                         },
                         {
-                            title: "13,000+ Customers",
-                            description: "We have served over 13,000 satisfied customers worldwide.",
+                            title: "Multiple Customers",
+                            description: "We have served over multiple satisfied customers worldwide.",
                             icon: <FolderKanban size={70} color="#fff" strokeWidth={2} className="text-white" />,
                         },
                         {
