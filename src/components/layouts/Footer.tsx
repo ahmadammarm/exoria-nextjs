@@ -181,8 +181,11 @@ export default function Footer() {
 
                     {/* Copyright Section */}
                     <div className="mt-12 pt-8 border-t border-gray-800">
-                        <p className="text-center text-gray-400 font-poppins">
-                            © {new Date().getFullYear()} Exoria Serana Digital. All rights reserved.
+                        <p className="text-center text-gray-400 font-poppins text-sm">
+                            © {new Date().getFullYear()} Exoria Serana Digital. All rights reserved. Developed by{' '}
+                            <Link href="https://ahmadammar.my.id" className="text-[#dc2626] hover:text-white transition-colors font-semibold">
+                                Ahmad Ammar
+                            </Link>
                         </p>
                     </div>
                 </div>
