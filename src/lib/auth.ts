@@ -30,33 +30,47 @@ export const authOptions: NextAuthOptions = {
 
                 const validation = SigninSchema.safeParse(credentials);
                 if (!validation.success) {
+                    console.error("Auth validation failed:", validation.error.format());
                     return null;
                 }
 
                 const { email, password } = credentials as z.infer<typeof SigninSchema>;
                 const normalizedEmail = email.trim().toLowerCase();
 
-                const user = await prisma.user.findFirst({
-                    where: {
-                        email: {
-                            equals: normalizedEmail,
-                            mode: "insensitive",
+                try {
+                    console.log(`Attempting login for: ${normalizedEmail}`);
+                    const user = await prisma.user.findFirst({
+                        where: {
+                            email: {
+                                equals: normalizedEmail,
+                                mode: "insensitive",
+                            },
                         },
-                    },
-                });
+                    });
 
-                if (!user) return null;
+                    if (!user) {
+                        console.warn(`Auth failed: User not found (${normalizedEmail})`);
+                        return null;
+                    }
 
-                const isPasswordCorrect = await compare(password, user.password);
-                if (!isPasswordCorrect) return null;
+                    const isPasswordCorrect = await compare(password, user.password);
+                    if (!isPasswordCorrect) {
+                        console.warn(`Auth failed: Incorrect password for (${normalizedEmail})`);
+                        return null;
+                    }
 
-                return {
-                    id: user.id,
-                    email: user.email,
-                    name: user.name,
-                    role: user.role,
-                    subscriptionStatus: user.subscriptionStatus,
-                } satisfies { id: string; email: string; name: string | null; role?: string; subscriptionStatus?: string };
+                    console.log(`Auth successful for: ${normalizedEmail}`);
+                    return {
+                        id: user.id,
+                        email: user.email,
+                        name: user.name,
+                        role: user.role,
+                        subscriptionStatus: user.subscriptionStatus,
+                    } satisfies { id: string; email: string; name: string | null; role?: string; subscriptionStatus?: string };
+                } catch (error) {
+                    console.error("Database error during auth:", error);
+                    return null;
+                }
             },
         }),
     ],
